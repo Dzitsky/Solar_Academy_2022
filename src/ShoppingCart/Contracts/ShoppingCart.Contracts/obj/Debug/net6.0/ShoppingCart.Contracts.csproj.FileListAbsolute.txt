@@ -1,0 +1,14 @@
+E:\Projects\Demo\ShoppingCart\src\ShoppingCart\Contracts\ShoppingCart.Contracts\bin\Debug\net6.0\ShoppingCart.Contracts.deps.json
+E:\Projects\Demo\ShoppingCart\src\ShoppingCart\Contracts\ShoppingCart.Contracts\bin\Debug\net6.0\ShoppingCart.Contracts.dll
+E:\Projects\Demo\ShoppingCart\src\ShoppingCart\Contracts\ShoppingCart.Contracts\bin\Debug\net6.0\ref\ShoppingCart.Contracts.dll
+E:\Projects\Demo\ShoppingCart\src\ShoppingCart\Contracts\ShoppingCart.Contracts\bin\Debug\net6.0\ShoppingCart.Contracts.pdb
+E:\Projects\Demo\ShoppingCart\src\ShoppingCart\Contracts\ShoppingCart.Contracts\obj\Debug\net6.0\ShoppingCart.Contracts.csproj.AssemblyReference.cache
+E:\Projects\Demo\ShoppingCart\src\ShoppingCart\Contracts\ShoppingCart.Contracts\obj\Debug\net6.0\ShoppingCart.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+E:\Projects\Demo\ShoppingCart\src\ShoppingCart\Contracts\ShoppingCart.Contracts\obj\Debug\net6.0\ShoppingCart.Contracts.AssemblyInfoInputs.cache
+E:\Projects\Demo\ShoppingCart\src\ShoppingCart\Contracts\ShoppingCart.Contracts\obj\Debug\net6.0\ShoppingCart.Contracts.AssemblyInfo.cs
+E:\Projects\Demo\ShoppingCart\src\ShoppingCart\Contracts\ShoppingCart.Contracts\obj\Debug\net6.0\ShoppingCart.Contracts.csproj.CoreCompileInputs.cache
+E:\Projects\Demo\ShoppingCart\src\ShoppingCart\Contracts\ShoppingCart.Contracts\obj\Debug\net6.0\ShoppingCart.Contracts.dll
+E:\Projects\Demo\ShoppingCart\src\ShoppingCart\Contracts\ShoppingCart.Contracts\obj\Debug\net6.0\ref\ShoppingCart.Contracts.dll
+E:\Projects\Demo\ShoppingCart\src\ShoppingCart\Contracts\ShoppingCart.Contracts\obj\Debug\net6.0\ShoppingCart.Contracts.pdb
+E:\Projects\Demo\ShoppingCart\src\ShoppingCart\Contracts\ShoppingCart.Contracts\bin\Debug\net6.0\ShoppingCart.Contracts.xml
+E:\Projects\Demo\ShoppingCart\src\ShoppingCart\Contracts\ShoppingCart.Contracts\obj\Debug\net6.0\ShoppingCart.Contracts.xml
