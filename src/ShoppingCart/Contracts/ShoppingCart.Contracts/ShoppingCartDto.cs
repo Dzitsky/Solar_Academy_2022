@@ -1,4 +1,6 @@
-﻿namespace ShoppingCart.Contracts;
+﻿using System;
+
+namespace ShoppingCart.Contracts;
 
 /// <summary>
 /// Модель представления корзины товаров.

@@ -1,4 +1,5 @@
 using Microsoft.OpenApi.Models;
+using ShoppingCart.Contracts;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +10,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
-    options.SwaggerDoc("v1", new OpenApiInfo{Title = "Shopping Cart Api", Version = "V1"});
+    options.SwaggerDoc("v1", new OpenApiInfo { Title = "Shopping Cart Api", Version = "V1" });
+    options.IncludeXmlComments(Path.Combine(Path.Combine(AppContext.BaseDirectory,
+        $"{typeof(ShoppingCartDto).Assembly.GetName().Name}.xml")));
     options.IncludeXmlComments(Path.Combine(Path.Combine(AppContext.BaseDirectory, "Documentation.xml")));
 });
 
