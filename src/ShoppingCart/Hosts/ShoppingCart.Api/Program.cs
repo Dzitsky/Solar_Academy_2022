@@ -1,9 +1,12 @@
 using Microsoft.OpenApi.Models;
 using ShoppingCart.Contracts;
+using ShoppingCart.Registrar;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddServices();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

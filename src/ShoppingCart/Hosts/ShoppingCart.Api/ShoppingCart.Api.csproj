@@ -18,6 +18,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\Contracts\ShoppingCart.Contracts\ShoppingCart.Contracts.csproj" />
+      <ProjectReference Include="..\..\Infrastructure\ShoppingCart.Registrar\ShoppingCart.Registrar.csproj" />
     </ItemGroup>
 
     <ItemGroup>
