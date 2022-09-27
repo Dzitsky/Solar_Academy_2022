@@ -15,6 +15,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\ShoppingCart.DataAccess\ShoppingCart.DataAccess.csproj" />
+      <ProjectReference Include="..\ShoppingCart.Infrastructure\ShoppingCart.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>

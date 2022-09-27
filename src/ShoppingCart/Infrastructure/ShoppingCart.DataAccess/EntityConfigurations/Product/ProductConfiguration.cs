@@ -13,6 +13,8 @@ public class ProductConfiguration : IEntityTypeConfiguration<Domain.Product>
         builder.Property(b => b.Id).ValueGeneratedOnAdd();
 
         builder.Property(b => b.Name).HasMaxLength(800);
+        
+        builder.Property(b => b.Description).HasMaxLength(2000);
 
         builder.HasMany(p => p.ShoppingCarts)
             .WithOne(s => s.Product)

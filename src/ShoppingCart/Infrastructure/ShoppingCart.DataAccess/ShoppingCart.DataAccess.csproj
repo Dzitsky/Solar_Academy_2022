@@ -19,7 +19,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\Application\ShoppingCart.AppServices\ShoppingCart.AppServices.csproj" />
       <ProjectReference Include="..\..\Domain\ShoppingCart.Domain\ShoppingCart.Domain.csproj" />
+      <ProjectReference Include="..\ShoppingCart.Infrastructure\ShoppingCart.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>
