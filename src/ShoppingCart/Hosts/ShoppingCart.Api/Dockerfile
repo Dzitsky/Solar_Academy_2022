@@ -1,20 +1,10 @@
-﻿FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
-WORKDIR /app
-EXPOSE 80
-EXPOSE 443
-
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-WORKDIR /src
-COPY ["src/ShoppingCart/Hosts/ShoppingCart.Api/ShoppingCart.Api.csproj", "ShoppingCart.Api/"]
-RUN dotnet restore "src/ShoppingCart/Hosts/ShoppingCart.Api/ShoppingCart.Api.csproj"
+﻿FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 COPY . .
-WORKDIR "/src/ShoppingCart.Api"
-RUN dotnet build "ShoppingCart.Api.csproj" -c Release -o /app/build
+WORKDIR ShoppingCart/Hosts/ShoppingCart.Api
+RUN dotnet restore
+RUN dotnet publish -c Release -o out
 
-FROM build AS publish
-RUN dotnet publish "ShoppingCart.Api.csproj" -c Release -o /app/publish
-
-FROM base AS final
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS runtime
 WORKDIR /app
-COPY --from=publish /app/publish .
+COPY --from=build /ShoppingCart/Hosts/ShoppingCart.Api/out ./
 ENTRYPOINT ["dotnet", "ShoppingCart.Api.dll"]

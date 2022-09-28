@@ -3,8 +3,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace ShoppingCart.DataAccess.EntityConfigurations.Product;
 
+/// <summary>
+/// Конфигурация таблицы Products.
+/// </summary>
 public class ProductConfiguration : IEntityTypeConfiguration<Domain.Product>
 {
+    /// <inheritdoc />
     public void Configure(EntityTypeBuilder<Domain.Product> builder)
     {
         builder.ToTable("Products");

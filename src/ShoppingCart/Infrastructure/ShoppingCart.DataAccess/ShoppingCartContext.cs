@@ -4,16 +4,20 @@ using ShoppingCart.DataAccess.EntityConfigurations.ShoppingCart;
 
 namespace ShoppingCart.DataAccess;
 
+/// <summary>
+/// Контекст БД
+/// </summary>
 public class ShoppingCartContext : DbContext
 {
     /// <summary>
     /// Инициализирует экземпляр <see cref="ShoppingCartContext"/>.
     /// </summary>
-    protected ShoppingCartContext(DbContextOptions options)
+    public ShoppingCartContext(DbContextOptions options)
         : base(options)
     {
     }
 
+    /// <inheritdoc />
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfiguration(new ProductConfiguration());

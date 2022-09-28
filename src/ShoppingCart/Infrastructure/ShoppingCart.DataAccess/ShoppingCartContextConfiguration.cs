@@ -5,6 +5,9 @@ using ShoppingCart.DataAccess.Interfaces;
 
 namespace ShoppingCart.DataAccess;
 
+/// <summary>
+/// Конфигурация контекста БД.
+/// </summary>
 public class ShoppingCartContextConfiguration : IDbContextOptionsConfigurator<ShoppingCartContext>
 {
     private const string PostgesConnectionStringName = "PostgresShoppingCartDb";
@@ -12,18 +15,23 @@ public class ShoppingCartContextConfiguration : IDbContextOptionsConfigurator<Sh
     private readonly IConfiguration _configuration;
     private readonly ILoggerFactory _loggerFactory;
 
+    /// <summary>
+    /// Инициализирует экземпляр <see cref="ShoppingCartContextConfiguration"/>.
+    /// </summary>
+    /// <param name="configuration">Конфигурация.</param>
+    /// <param name="loggerFactory">Фабрика средства логирования.</param>
     public ShoppingCartContextConfiguration(ILoggerFactory loggerFactory, IConfiguration configuration)
     {
         _loggerFactory = loggerFactory;
         _configuration = configuration;
     }
 
+    /// <inheritdoc />
     public void Configure(DbContextOptionsBuilder<ShoppingCartContext> options)
     {
         string connectionString;
 
-        // var useMsSql = _configuration.Get<bool>("DataBaseOptions:UseMsSql").Value;
-        var useMsSql = false;
+         var useMsSql = _configuration.GetSection("DataBaseOptions:UseMsSql").Get<bool>();
 
         if (!useMsSql)
         {

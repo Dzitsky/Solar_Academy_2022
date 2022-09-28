@@ -9,6 +9,10 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity: class
     protected DbContext DbContext { get; }
     protected DbSet<TEntity> DbSet { get; }
 
+    /// <summary>
+    /// Инициализирует экземпляр <see cref="Repository"/>.
+    /// </summary>
+    /// <param name="context">Контекст БД.</param>
     public Repository(DbContext context)
     {
         DbContext = context;

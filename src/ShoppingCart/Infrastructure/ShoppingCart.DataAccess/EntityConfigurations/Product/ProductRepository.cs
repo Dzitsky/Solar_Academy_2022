@@ -5,16 +5,22 @@ using ShoppingCart.Infrastructure.Repository;
 
 namespace ShoppingCart.DataAccess.EntityConfigurations.Product;
 
+/// <inheritdoc />
 public class ProductRepository : IProductRepository
 {
     private readonly IRepository<Domain.Product> _repository;
 
+    /// <summary>
+    /// Инициализирует экземпляр <see cref="ProductRepository"/>.
+    /// </summary>
+    /// <param name="repository">Базовый репозиторий.</param>
     public ProductRepository(IRepository<Domain.Product> repository)
     {
         _repository = repository;
     }
 
-    public async Task<IReadOnlyCollection<ProductDto>> GetAll(int take, int skip)
+    /// <inheritdoc />
+    public async Task<IReadOnlyCollection<ProductDto>> GetAll(int take, int skip, CancellationToken cancellation)
     {
         return await _repository.GetAll()
             .Select(p => new ProductDto
@@ -24,10 +30,12 @@ public class ProductRepository : IProductRepository
                 Description = p.Description,
                 Price = p.Price
             })
-            .Take(take).Skip(skip).ToListAsync();
+            .Take(take).Skip(skip).ToListAsync(cancellation);
     }
 
-    public async Task<IReadOnlyCollection<ProductDto>> GetAllFiltered(ProductFilterRequest request)
+    /// <inheritdoc />
+    public async Task<IReadOnlyCollection<ProductDto>> GetAllFiltered(ProductFilterRequest request,
+        CancellationToken cancellation)
     {
         var query = _repository.GetAll();
 
@@ -47,6 +55,6 @@ public class ProductRepository : IProductRepository
                 Name = p.Name,
                 Description = p.Description,
                 Price = p.Price
-            }).ToListAsync();
+            }).ToListAsync(cancellation);
     }
 }

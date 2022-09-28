@@ -1,19 +1,31 @@
+using ShoppingCart.AppServices.Product.Repositories;
 using ShoppingCart.Contracts;
 
 namespace ShoppingCart.AppServices.Product.Services;
 
+/// <inheritdoc />
 public class ProductService : IProductService
 {
-    
-    
-    
-    public Task<IReadOnlyCollection<ProductDto>> GetAll(int take, int skip)
+    private readonly IProductRepository _productRepository;
+
+    /// <summary>
+    /// Инициализирует экземпляр <see cref="ProductService"/>.
+    /// </summary>
+    /// <param name="productRepository"></param>
+    public ProductService(IProductRepository productRepository)
     {
-        throw new NotImplementedException();
+        _productRepository = productRepository;
     }
 
-    public Task<IReadOnlyCollection<ProductDto>> GetAllFiltered(ProductFilterRequest request)
+    /// <inheritdoc />
+    public Task<IReadOnlyCollection<ProductDto>> GetAll(int take, int skip, CancellationToken cancellation)
     {
-        throw new NotImplementedException();
+        return _productRepository.GetAll(take, skip, cancellation);
+    }
+
+    /// <inheritdoc />
+    public Task<IReadOnlyCollection<ProductDto>> GetAllFiltered(ProductFilterRequest request, CancellationToken cancellation)
+    {
+        return _productRepository.GetAllFiltered(request, cancellation);
     }
 }
