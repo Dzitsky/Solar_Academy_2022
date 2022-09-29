@@ -1,4 +1,4 @@
-namespace ShoppingCart.Contracts;
+namespace ShoppingCart.Contracts.Product;
 
 /// <summary>
 /// Модель фильтра товаров.

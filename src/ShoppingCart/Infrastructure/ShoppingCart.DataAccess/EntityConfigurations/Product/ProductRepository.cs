@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using ShoppingCart.AppServices.Product.Repositories;
 using ShoppingCart.Contracts;
+using ShoppingCart.Contracts.Product;
 using ShoppingCart.Infrastructure.Repository;
 
 namespace ShoppingCart.DataAccess.EntityConfigurations.Product;

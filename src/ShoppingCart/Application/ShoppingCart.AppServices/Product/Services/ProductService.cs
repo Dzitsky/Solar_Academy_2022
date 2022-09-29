@@ -1,5 +1,6 @@
 using ShoppingCart.AppServices.Product.Repositories;
 using ShoppingCart.Contracts;
+using ShoppingCart.Contracts.Product;
 
 namespace ShoppingCart.AppServices.Product.Services;
 

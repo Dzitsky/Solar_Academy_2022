@@ -1,6 +1,5 @@
+using System.Reflection;
 using Microsoft.EntityFrameworkCore;
-using ShoppingCart.DataAccess.EntityConfigurations.Product;
-using ShoppingCart.DataAccess.EntityConfigurations.ShoppingCart;
 
 namespace ShoppingCart.DataAccess;
 
@@ -20,7 +19,8 @@ public class ShoppingCartContext : DbContext
     /// <inheritdoc />
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfiguration(new ProductConfiguration());
-        modelBuilder.ApplyConfiguration(new ShoppingCartConfiguration());
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly(), t => t.GetInterfaces().Any(i =>
+                i.IsGenericType &&
+                i.GetGenericTypeDefinition() == typeof(IEntityTypeConfiguration<>)));
     }
 }

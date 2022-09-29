@@ -2,6 +2,7 @@ using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using ShoppingCart.AppServices.Product.Services;
 using ShoppingCart.Contracts;
+using ShoppingCart.Contracts.Product;
 
 namespace ShoppingCart.Api.Controllers;
 

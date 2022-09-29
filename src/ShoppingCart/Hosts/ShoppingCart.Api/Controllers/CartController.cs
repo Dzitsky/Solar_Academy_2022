@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
 using System.Net;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ShoppingCart.AppServices.ShoppingCart.Services;
 using ShoppingCart.Contracts;
@@ -32,9 +29,9 @@ public class CartController : ControllerBase
     /// <returns>Коллекция элементов <see cref="ShoppingCartDto"/>.</returns>
     [HttpGet]
     [ProducesResponseType(typeof(IReadOnlyCollection<ShoppingCartDto>), (int)HttpStatusCode.OK)]
-    public async Task<IActionResult> GetAsync()
+    public async Task<IActionResult> GetAsync(CancellationToken cancellation)
     {
-        var result = await _shoppingCartService.GetAsync();
+        var result = await _shoppingCartService.GetAsync(cancellation);
         return Ok(result);
     }
     
@@ -44,9 +41,9 @@ public class CartController : ControllerBase
     [HttpPut("{id}")]
     [ProducesResponseType((int)HttpStatusCode.NoContent)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
-    public async Task<IActionResult> UpdateQuantityAsync(Guid id, int quantity)
+    public async Task<IActionResult> UpdateQuantityAsync(Guid id, int quantity, CancellationToken cancellation)
     {
-        await _shoppingCartService.UpdateQuantityAsync(id, quantity);
+        await _shoppingCartService.UpdateQuantityAsync(id, quantity, cancellation);
         return NoContent();
     }
 
@@ -57,9 +54,9 @@ public class CartController : ControllerBase
     [HttpDelete]
     [ProducesResponseType((int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
-    public async Task<IActionResult> DeleteAsync(Guid id)
+    public async Task<IActionResult> DeleteAsync(Guid id, CancellationToken cancellation)
     {
-        await _shoppingCartService.DeleteAsync(id);
+        await _shoppingCartService.DeleteAsync(id, cancellation);
         return NoContent();
     }
 }
