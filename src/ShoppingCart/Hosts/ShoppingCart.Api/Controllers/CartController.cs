@@ -1,4 +1,5 @@
 using System.Net;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ShoppingCart.AppServices.ShoppingCart.Services;
 using ShoppingCart.Contracts;
@@ -9,6 +10,7 @@ namespace ShoppingCart.Api.Controllers;
 /// Работа с корзиной товаров.
 /// </summary>
 [ApiController]
+[Authorize]
 [Route("v1/[controller]")]
 public class CartController : ControllerBase
 {

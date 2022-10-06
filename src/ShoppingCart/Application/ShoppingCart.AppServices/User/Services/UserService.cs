@@ -1,5 +1,6 @@
 using ShoppingCart.AppServices.ShoppingCart.Repositories;
 using ShoppingCart.Contracts;
+using ShoppingCart.Domain;
 
 namespace ShoppingCart.AppServices.ShoppingCart.Services;
 
@@ -13,21 +14,29 @@ public class UserService : IUserService
         _userRepository = userRepository;
     }
 
-//    /// <inheritdoc />
-//    public Task<IReadOnlyCollection<ShoppingCartDto>> GetAsync(CancellationToken cancellation)
-//    {
-//        return _shoppingCartRepository.GetAllAsync(cancellation);
-//    }
+    public Task<User> GetCurrent(CancellationToken cancellationToken)
+    {
 
-//    /// <inheritdoc />
-//    public Task UpdateQuantityAsync(Guid id, int quantity, CancellationToken cancellation)
-//    {
-//        return _shoppingCartRepository.UpdateQuantityAsync(id, quantity, cancellation);
-//    }
+        throw new NotImplementedException();
+    }
 
-//    /// <inheritdoc />
-//    public Task DeleteAsync(Guid id, CancellationToken cancellation)
-//    {
-//        return _shoppingCartRepository.DeleteAsync(id, cancellation);
-   //}
+    public async Task<string> Login(string Login, string Password, CancellationToken cancellationToken)
+    {
+        //TODO
+
+        var result = "secretKey";
+        
+        return result;
+
+        throw new NotImplementedException();
+    }
+
+    public async Task<int> Register(string Login, string Password, CancellationToken cancellationToken)
+    {
+        var result = 1;
+
+        return 1;
+
+        throw new NotImplementedException();
+    }
 }

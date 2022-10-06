@@ -1,4 +1,5 @@
 using System.Net;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ShoppingCart.AppServices.ShoppingCart.Services;
 using ShoppingCart.Contracts;
@@ -9,6 +10,7 @@ namespace ShoppingCart.Api.Controllers;
 /// Работа с пользователями.
 /// </summary>
 [ApiController]
+[AllowAnonymous]
 [Route("v1/[controller]")]
 public class UserController : ControllerBase
 {
@@ -23,18 +25,28 @@ public class UserController : ControllerBase
         _userService = userService;
     }
 
-    ///// <summary>
-    ///// Возвращает позиции товаров в корзине.
-    ///// </summary>
-    ///// <returns>Коллекция элементов <see cref="ShoppingCartDto"/>.</returns>
-    //[HttpGet]
-    //[ProducesResponseType(typeof(IReadOnlyCollection<ShoppingCartDto>), (int)HttpStatusCode.OK)]
-    //public async Task<IActionResult> GetAsync(CancellationToken cancellation)
-    //{
-    //    var result = await _shoppingCartService.GetAsync(cancellation);
-    //    return Ok(result);
-    //}
-    
+    [HttpPost("register")]
+    [ProducesResponseType(StatusCodes.Status201Created)]
+    public async Task<IActionResult> Register(string login, string password, CancellationToken cancellation)
+    {
+        var user = await _userService.Register(login, password, cancellation);
+
+        return Created("",new { });
+    }
+
+
+    [HttpPost("login")]
+    [ProducesResponseType(StatusCodes.Status201Created)]
+    public async Task<IActionResult> Login(string login, string password, CancellationToken cancellation)
+    {
+        var token = await _userService.Login(login, password, cancellation);
+
+        return Ok(token);
+    }
+
+
+
+
     ///// <summary>
     ///// Обновляет количество товара в корзине.
     ///// </summary>
