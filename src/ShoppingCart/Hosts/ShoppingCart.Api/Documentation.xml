@@ -46,5 +46,16 @@
             <param name="cancellation"></param>
             <returns></returns>
         </member>
+        <member name="T:ShoppingCart.Api.Controllers.UserController">
+            <summary>
+            Работа с пользователями.
+            </summary>
+        </member>
+        <member name="M:ShoppingCart.Api.Controllers.UserController.#ctor(ShoppingCart.AppServices.ShoppingCart.Services.IUserService)">
+            <summary>
+            
+            </summary>
+            <param name="userService"></param>
+        </member>
     </members>
 </doc>
