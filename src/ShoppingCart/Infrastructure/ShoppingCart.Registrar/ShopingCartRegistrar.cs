@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using ShoppingCart.AppServices;
 using ShoppingCart.AppServices.Product.Repositories;
 using ShoppingCart.AppServices.Product.Services;
 using ShoppingCart.AppServices.Services;
@@ -9,13 +10,14 @@ using ShoppingCart.DataAccess;
 using ShoppingCart.DataAccess.EntityConfigurations.Product;
 using ShoppingCart.DataAccess.EntityConfigurations.ShoppingCart;
 using ShoppingCart.DataAccess.Interfaces;
+using ShoppingCart.Infrastructure.Identity;
 using ShoppingCart.Infrastructure.Repository;
 
 namespace ShoppingCart.Registrar;
 
 public static class ShopingCartRegistrar
 {
-    public static IServiceCollection AddServices(this IServiceCollection services)
+    public static IServiceCollection AddServiceRegistrationModule(this IServiceCollection services)
     {
         services.AddSingleton<IDateTimeService, DateTimeService>();
         services.AddSingleton<IDbContextOptionsConfigurator<ShoppingCartContext>, ShoppingCartContextConfiguration>();
@@ -36,6 +38,8 @@ public static class ShopingCartRegistrar
 
         services.AddTransient<IShoppingCartService, ShoppingCartService>();
         services.AddTransient<IShoppingCartRepository, ShoppingCartRepository>();
+
+        services.AddScoped<IClaimsAccessor, HttpContextClaimsAccessor>();
 
         return services;
     }

@@ -4,6 +4,8 @@ using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
+using Microsoft.Extensions.Configuration;
+using System.Net;
 
 namespace ShoppingCart.AppServices.ShoppingCart.Services;
 
@@ -12,13 +14,17 @@ public class UserService : IUserService
 {
     private readonly IUserRepository _userRepository;
     private readonly IClaimsAccessor _claimsAccessor;
+    private readonly IConfiguration _configuration;
 
 
-
-    public UserService(IUserRepository userRepository, IClaimsAccessor claimsAccessor)
+    public UserService(
+        IUserRepository userRepository, 
+        IClaimsAccessor claimsAccessor,
+        IConfiguration configuration)
     {
         _userRepository = userRepository;
         _claimsAccessor = claimsAccessor;
+        _configuration = configuration;
     }
 
     public async Task<User> GetCurrent(CancellationToken cancellationToken)
@@ -30,8 +36,6 @@ public class UserService : IUserService
         {
             return null;
         }
-
-        var user = await _userRepository.FindWhere
 
         return null;
 
@@ -57,7 +61,7 @@ public class UserService : IUserService
             new Claim(ClaimTypes.Name, existingUser.Login)        
         };
 
-        string secretKey = "secretKeysecretKeysecretKeysecretKey";
+        var secretKey = _configuration["Token:SecretKey"];
 
         var token = new JwtSecurityToken
             (

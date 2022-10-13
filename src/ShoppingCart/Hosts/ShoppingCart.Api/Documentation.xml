@@ -4,6 +4,11 @@
         <name>ShoppingCart.Api</name>
     </assembly>
     <members>
+        <member name="T:ShoppingCart.Api.AuthenticationModule">
+            <summary>
+            Подключение и настройки Swagger-а
+            </summary>
+        </member>
         <member name="T:ShoppingCart.Api.Controllers.CartController">
             <summary>
             Работа с корзиной товаров.
@@ -83,7 +88,7 @@
         </member>
         <member name="T:ShoppingCart.Api.SwaggerModule">
             <summary>
-            
+            Подключение и настройки Swagger-а
             </summary>
         </member>
     </members>
