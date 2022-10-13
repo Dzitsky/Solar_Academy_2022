@@ -1,4 +1,5 @@
-using ShoppingCart.Contracts;
+using System.Linq.Expressions;
+using ShoppingCart.Domain;
 
 namespace ShoppingCart.AppServices.ShoppingCart.Repositories;
 
@@ -7,6 +8,10 @@ namespace ShoppingCart.AppServices.ShoppingCart.Repositories;
 /// </summary>
 public interface IUserRepository
 {
+    Task<User> FindWhere(Expression<Func<User, bool>> predicate, CancellationToken cancellationToken);
+
+    Task AddAsync(User model);
+
     ///// <summary>
     ///// Возвращает все элементы корзины.
     ///// </summary>
@@ -19,7 +24,7 @@ public interface IUserRepository
     ///// <param name="id">Идентификатор позиции корзины.</param>
     ///// <param name="quantity">Новое количество товара.</param>
     //Task UpdateQuantityAsync(Guid id, int quantity, CancellationToken cancellation);
-    
+
     ///// <summary>
     ///// Удаляет товар из корзины.
     ///// </summary>

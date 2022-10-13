@@ -13,6 +13,14 @@ public interface IShoppingCartService
     /// <returns></returns>
     Task<IReadOnlyCollection<ShoppingCartDto>> GetAsync(CancellationToken cancellation);
 
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    Task<Guid> CreateAsync(CancellationToken cancellation);
+
     /// <summary>
     /// 
     /// </summary>

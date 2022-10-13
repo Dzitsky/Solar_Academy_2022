@@ -1,6 +1,9 @@
 using ShoppingCart.AppServices.ShoppingCart.Repositories;
-using ShoppingCart.Contracts;
 using ShoppingCart.Domain;
+using System.Security.Claims;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Text;
 
 namespace ShoppingCart.AppServices.ShoppingCart.Services;
 
@@ -8,35 +11,87 @@ namespace ShoppingCart.AppServices.ShoppingCart.Services;
 public class UserService : IUserService
 {
     private readonly IUserRepository _userRepository;
+    private readonly IClaimsAccessor _claimsAccessor;
 
-    public UserService(IUserRepository userRepository)
+
+
+    public UserService(IUserRepository userRepository, IClaimsAccessor claimsAccessor)
     {
         _userRepository = userRepository;
+        _claimsAccessor = claimsAccessor;
     }
 
-    public Task<User> GetCurrent(CancellationToken cancellationToken)
+    public async Task<User> GetCurrent(CancellationToken cancellationToken)
     {
+        var claims = await _claimsAccessor.GetClaims(cancellationToken);
+        var id = claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
 
-        throw new NotImplementedException();
+        if (string.IsNullOrWhiteSpace(id))
+        {
+            return null;
+        }
+
+        var user = await _userRepository.FindWhere
+
+        return null;
+
     }
 
-    public async Task<string> Login(string Login, string Password, CancellationToken cancellationToken)
+    public async Task<string> Login(string login, string password, CancellationToken cancellationToken)
     {
-        //TODO
+        var existingUser = await _userRepository.FindWhere(user => user.Login == login, cancellationToken);
 
-        var result = "secretKey";
+        if (existingUser == null)
+        {
+            throw new Exception("Пользователь не найден.");
+        }
+
+        if (!existingUser.Password.Equals(password))
+        {
+            throw new Exception("Нет прав.");
+        }
+
+        var claims = new List<Claim>
+        { 
+            new Claim(ClaimTypes.NameIdentifier, existingUser.Id.ToString()),
+            new Claim(ClaimTypes.Name, existingUser.Login)        
+        };
+
+        string secretKey = "secretKeysecretKeysecretKeysecretKey";
+
+        var token = new JwtSecurityToken
+            (
+            claims: claims,
+            expires: DateTime.UtcNow.AddDays(1),
+            notBefore: DateTime.UtcNow,
+            signingCredentials: new SigningCredentials(
+                new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey)),
+                SecurityAlgorithms.HmacSha256                
+                )
+            );
+
+        var result = new JwtSecurityTokenHandler().WriteToken(token);
         
         return result;
-
-        throw new NotImplementedException();
     }
 
-    public async Task<int> Register(string Login, string Password, CancellationToken cancellationToken)
+    public async Task<Guid> Register(string login, string password, CancellationToken cancellationToken)
     {
-        var result = 1;
+        var user = new User {
+            Name = login,
+            Login = login,
+            Password = password,
+            CreateDate = DateTime.UtcNow
+        };
 
-        return 1;
+        var existingUser = await _userRepository.FindWhere(user => user.Login == login, cancellationToken);
+        if (existingUser != null)
+        {
+            throw new Exception($"Пользователь с логином '{login}' уже зарегистрирован!");
+        }
 
-        throw new NotImplementedException();
+        await _userRepository.AddAsync(user);
+
+        return user.Id;
     }
 }

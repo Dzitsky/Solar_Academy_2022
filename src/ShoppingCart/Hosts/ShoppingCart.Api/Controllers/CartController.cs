@@ -15,7 +15,7 @@ namespace ShoppingCart.Api.Controllers;
 public class CartController : ControllerBase
 {
     private readonly IShoppingCartService _shoppingCartService;
-    
+
     /// <summary>
     /// 
     /// </summary>
@@ -34,9 +34,23 @@ public class CartController : ControllerBase
     public async Task<IActionResult> GetAsync(CancellationToken cancellation)
     {
         var result = await _shoppingCartService.GetAsync(cancellation);
+
         return Ok(result);
     }
-    
+
+    /// <summary>
+    /// Cоздает корзину.
+    /// </summary>
+    /// <returns>Коллекция элементов <see cref="ShoppingCartDto"/>.</returns>
+    [HttpPost]
+    [ProducesResponseType(typeof(IReadOnlyCollection<ShoppingCartDto>), StatusCodes.Status201Created)]
+    public async Task<IActionResult> PostAsync(CancellationToken cancellation)
+    {
+        var result = await _shoppingCartService.GetAsync(cancellation);
+
+        return Ok(result);
+    }
+
     /// <summary>
     /// Обновляет количество товара в корзине.
     /// </summary>

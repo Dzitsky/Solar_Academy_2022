@@ -20,11 +20,8 @@ namespace ShoppingCart.Migrations.Factories
             // получаем строку подключения из файла appsettings.json
             string connectionString = config.GetConnectionString("PostgresShoppingCartDb");
             optionsBuilder.UseNpgsql(connectionString, opts => opts
-            .CommandTimeout((int)TimeSpan.FromMinutes(10).TotalSeconds)
-            
-            .MigrationsAssembly(typeof(MigrationContextFactory).Assembly.FullName)            
+            .CommandTimeout((int)TimeSpan.FromMinutes(10).TotalSeconds)           
             );
-
 
             return new MigrationsDbContext(optionsBuilder.Options);
         }

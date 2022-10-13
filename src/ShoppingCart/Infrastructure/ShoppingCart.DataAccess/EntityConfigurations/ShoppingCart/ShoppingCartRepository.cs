@@ -35,6 +35,16 @@ public class ShoppingCartRepository : IShoppingCartRepository
     }
 
     /// <inheritdoc />
+    public async Task<Guid> CreateAsync(CancellationToken cancellation)
+    {
+        var shoppingCart = new Domain.ShoppingCart();
+
+        await _repository.AddAsync(shoppingCart);
+
+        return shoppingCart.Id;
+    }
+
+    /// <inheritdoc />
     public async Task UpdateQuantityAsync(Guid id, int quantity, CancellationToken cancellation)
     {
         var existingCart = await _repository.GetByIdAsync(id);

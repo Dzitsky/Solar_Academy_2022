@@ -20,6 +20,12 @@ public class ShoppingCartService : IShoppingCartService
     }
 
     /// <inheritdoc />
+    public async Task<Guid> CreateAsync(CancellationToken cancellation)
+    {
+        return await _shoppingCartRepository.CreateAsync(cancellation);
+    }
+
+    /// <inheritdoc />
     public Task UpdateQuantityAsync(Guid id, int quantity, CancellationToken cancellation)
     {
         return _shoppingCartRepository.UpdateQuantityAsync(id, quantity, cancellation);

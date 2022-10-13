@@ -17,7 +17,7 @@ public class UserController : ControllerBase
     private readonly IUserService _userService;
     
     /// <summary>
-    /// 
+    /// Работа с пользователями.
     /// </summary>
     /// <param name="userService"></param>
     public UserController(IUserService userService)
@@ -25,6 +25,13 @@ public class UserController : ControllerBase
         _userService = userService;
     }
 
+    /// <summary>
+    /// Зарегистрировать пользователя.
+    /// </summary>
+    /// <param name="login"></param>
+    /// <param name="password"></param>
+    /// <param name="cancellation"></param>
+    /// <returns></returns>
     [HttpPost("register")]
     [ProducesResponseType(StatusCodes.Status201Created)]
     public async Task<IActionResult> Register(string login, string password, CancellationToken cancellation)
@@ -34,7 +41,13 @@ public class UserController : ControllerBase
         return Created("",new { });
     }
 
-
+    /// <summary>
+    /// Залогинить пользователя.
+    /// </summary>
+    /// <param name="login"></param>
+    /// <param name="password"></param>
+    /// <param name="cancellation"></param>
+    /// <returns></returns>
     [HttpPost("login")]
     [ProducesResponseType(StatusCodes.Status201Created)]
     public async Task<IActionResult> Login(string login, string password, CancellationToken cancellation)
@@ -43,32 +56,4 @@ public class UserController : ControllerBase
 
         return Ok(token);
     }
-
-
-
-
-    ///// <summary>
-    ///// Обновляет количество товара в корзине.
-    ///// </summary>
-    //[HttpPut("{id}")]
-    //[ProducesResponseType((int)HttpStatusCode.NoContent)]
-    //[ProducesResponseType((int)HttpStatusCode.NotFound)]
-    //public async Task<IActionResult> UpdateQuantityAsync(Guid id, int quantity, CancellationToken cancellation)
-    //{
-    //    await _shoppingCartService.UpdateQuantityAsync(id, quantity, cancellation);
-    //    return NoContent();
-    //}
-
-    ///// <summary>
-    ///// Удаляет товар из корзины.
-    ///// </summary>
-    ///// <param name="id">Идентификатор товара в корзине.</param>
-    //[HttpDelete]
-    //[ProducesResponseType((int)HttpStatusCode.OK)]
-    //[ProducesResponseType((int)HttpStatusCode.NotFound)]
-    //public async Task<IActionResult> DeleteAsync(Guid id, CancellationToken cancellation)
-    //{
-    //    await _shoppingCartService.DeleteAsync(id, cancellation);
-    //    return NoContent();
-    //}
 }

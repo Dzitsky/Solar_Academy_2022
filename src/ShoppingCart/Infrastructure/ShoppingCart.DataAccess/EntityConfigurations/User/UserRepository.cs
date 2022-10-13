@@ -3,7 +3,9 @@ using ShoppingCart.AppServices.Product.Repositories;
 using ShoppingCart.AppServices.ShoppingCart.Repositories;
 using ShoppingCart.Contracts;
 using ShoppingCart.Contracts.Product;
+using ShoppingCart.Domain;
 using ShoppingCart.Infrastructure.Repository;
+using System.Linq.Expressions;
 
 namespace ShoppingCart.DataAccess.EntityConfigurations.Product;
 
@@ -19,6 +21,18 @@ public class UserRepository : IUserRepository
     public UserRepository(IRepository<Domain.User> repository)
     {
         _repository = repository;
+    }
+
+    public async Task<User> FindWhere(Expression<Func<User, bool>> predicate, CancellationToken cancellationToken)
+    {
+        var data = _repository.GetAllFiltered(predicate);
+
+        return await data.Where(predicate).FirstOrDefaultAsync(cancellationToken);
+    }
+
+    public Task AddAsync(User model)
+    {
+        return _repository.AddAsync(model);
     }
 
     ///// <inheritdoc />

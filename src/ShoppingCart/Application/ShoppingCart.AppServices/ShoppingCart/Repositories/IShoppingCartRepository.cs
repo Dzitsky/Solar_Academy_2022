@@ -14,6 +14,12 @@ public interface IShoppingCartRepository
     Task<IReadOnlyCollection<ShoppingCartDto>> GetAllAsync(CancellationToken cancellation);
 
     /// <summary>
+    /// Создает корзину.
+    /// </summary>
+    /// <returns>Идентификатор корзины <see cref="ShoppingCartDto"/>.</returns>
+    Task<Guid> CreateAsync(CancellationToken cancellation);
+
+    /// <summary>
     /// Обновляет количество товара в корзине.
     /// </summary>
     /// <param name="id">Идентификатор позиции корзины.</param>

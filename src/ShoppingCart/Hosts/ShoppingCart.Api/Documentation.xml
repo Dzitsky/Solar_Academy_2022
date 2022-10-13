@@ -21,6 +21,12 @@
             </summary>
             <returns>Коллекция элементов <see cref="T:ShoppingCart.Contracts.ShoppingCartDto"/>.</returns>
         </member>
+        <member name="M:ShoppingCart.Api.Controllers.CartController.PostAsync(System.Threading.CancellationToken)">
+            <summary>
+            Cоздает корзину.
+            </summary>
+            <returns>Коллекция элементов <see cref="T:ShoppingCart.Contracts.ShoppingCartDto"/>.</returns>
+        </member>
         <member name="M:ShoppingCart.Api.Controllers.CartController.UpdateQuantityAsync(System.Guid,System.Int32,System.Threading.CancellationToken)">
             <summary>
             Обновляет количество товара в корзине.
@@ -53,9 +59,32 @@
         </member>
         <member name="M:ShoppingCart.Api.Controllers.UserController.#ctor(ShoppingCart.AppServices.ShoppingCart.Services.IUserService)">
             <summary>
-            
+            Работа с пользователями.
             </summary>
             <param name="userService"></param>
+        </member>
+        <member name="M:ShoppingCart.Api.Controllers.UserController.Register(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Зарегистрировать пользователя.
+            </summary>
+            <param name="login"></param>
+            <param name="password"></param>
+            <param name="cancellation"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ShoppingCart.Api.Controllers.UserController.Login(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Залогинить пользователя.
+            </summary>
+            <param name="login"></param>
+            <param name="password"></param>
+            <param name="cancellation"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ShoppingCart.Api.SwaggerModule">
+            <summary>
+            
+            </summary>
         </member>
     </members>
 </doc>

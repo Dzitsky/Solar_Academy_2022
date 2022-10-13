@@ -5,15 +5,15 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using ShoppingCart.DataAccess;
+using ShoppingCart.Migrations;
 
 #nullable disable
 
-namespace ShoppingCart.DataAccess.Migrations
+namespace ShoppingCart.Migrations.Migrations
 {
-    [DbContext(typeof(ShoppingCartContext))]
-    [Migration("20221006162115_AddUser")]
-    partial class AddUser
+    [DbContext(typeof(MigrationsDbContext))]
+    [Migration("20221012151138_Add_User")]
+    partial class Add_User
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

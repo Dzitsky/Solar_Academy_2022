@@ -2,18 +2,20 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using ShoppingCart.DataAccess;
+using ShoppingCart.Migrations;
 
 #nullable disable
 
-namespace ShoppingCart.DataAccess.Migrations
+namespace ShoppingCart.Migrations.Migrations
 {
-    [DbContext(typeof(ShoppingCartContext))]
-    partial class ShoppingCartContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(MigrationsDbContext))]
+    [Migration("20221012160556_Add_User_Login")]
+    partial class Add_User_Login
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -76,6 +78,14 @@ namespace ShoppingCart.DataAccess.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Login")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)");
 
                     b.Property<string>("Name")
                         .IsRequired()
