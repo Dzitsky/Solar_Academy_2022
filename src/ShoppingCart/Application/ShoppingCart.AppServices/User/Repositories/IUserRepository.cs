@@ -10,8 +10,11 @@ public interface IUserRepository
 {
     Task<User> FindWhere(Expression<Func<User, bool>> predicate, CancellationToken cancellationToken);
 
+    Task<User> FindById(Guid Id, CancellationToken cancellationToken);
+
     Task AddAsync(User model);
 
+    
     ///// <summary>
     ///// Возвращает все элементы корзины.
     ///// </summary>

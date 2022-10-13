@@ -35,17 +35,8 @@ public class UserRepository : IUserRepository
         return _repository.AddAsync(model);
     }
 
-    ///// <inheritdoc />
-    //public async Task<IReadOnlyCollection<ProductDto>> GetAll(int take, int skip, CancellationToken cancellation)
-    //{
-    //    return await _repository.GetAll()
-    //        .Select(p => new UserDto
-    //        {
-    //            Id = p.Id,
-    //            Name = p.Name,
-    //            Description = p.Description,
-    //            Price = p.Price
-    //        })
-    //        .Take(take).Skip(skip).ToListAsync(cancellation);
-    //}
+    public async Task<User> FindById(Guid Id, CancellationToken cancellationToken)
+    {
+       return await _repository.GetByIdAsync(Id);
+    }
 }

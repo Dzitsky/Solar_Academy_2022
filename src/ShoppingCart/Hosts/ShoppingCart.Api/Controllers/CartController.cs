@@ -15,14 +15,16 @@ namespace ShoppingCart.Api.Controllers;
 public class CartController : ControllerBase
 {
     private readonly IShoppingCartService _shoppingCartService;
+    private readonly IUserService _userService;
 
     /// <summary>
     /// 
     /// </summary>
     /// <param name="shoppingCartService"></param>
-    public CartController(IShoppingCartService shoppingCartService)
+    public CartController(IShoppingCartService shoppingCartService, IUserService userService)
     {
         _shoppingCartService = shoppingCartService;
+        _userService = userService;
     }
 
     /// <summary>
@@ -46,6 +48,8 @@ public class CartController : ControllerBase
     [ProducesResponseType(typeof(IReadOnlyCollection<ShoppingCartDto>), StatusCodes.Status201Created)]
     public async Task<IActionResult> PostAsync(CancellationToken cancellation)
     {
+        var user = await _userService.GetCurrent(cancellation);
+              
         var result = await _shoppingCartService.GetAsync(cancellation);
 
         return Ok(result);

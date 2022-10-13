@@ -14,7 +14,7 @@
             Работа с корзиной товаров.
             </summary>
         </member>
-        <member name="M:ShoppingCart.Api.Controllers.CartController.#ctor(ShoppingCart.AppServices.ShoppingCart.Services.IShoppingCartService)">
+        <member name="M:ShoppingCart.Api.Controllers.CartController.#ctor(ShoppingCart.AppServices.ShoppingCart.Services.IShoppingCartService,ShoppingCart.AppServices.ShoppingCart.Services.IUserService)">
             <summary>
             
             </summary>

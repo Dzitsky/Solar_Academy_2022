@@ -30,15 +30,22 @@ public class UserService : IUserService
     public async Task<User> GetCurrent(CancellationToken cancellationToken)
     {
         var claims = await _claimsAccessor.GetClaims(cancellationToken);
-        var id = claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+        var claimId = claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
 
-        if (string.IsNullOrWhiteSpace(id))
+        if (string.IsNullOrWhiteSpace(claimId))
         {
             return null;
         }
 
-        return null;
+        var id = Guid.Parse(claimId);
+        var user = await _userRepository.FindById(id, cancellationToken);
 
+        if (user == null)
+        {
+            throw new Exception($"Не найден пользователь с идентификатором '{id}'");
+        }
+
+        return user;
     }
 
     public async Task<string> Login(string login, string password, CancellationToken cancellationToken)
