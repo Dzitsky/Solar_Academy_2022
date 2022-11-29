@@ -35,7 +35,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingCart.AppServices", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{11336060-D225-4DC6-84E9-2E31291C3048}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingCart.Tests", "src\ShoppingCart\Tests\ShoppingCart.Tests\ShoppingCart.Tests.csproj", "{8DF0AF95-7A68-47DC-9410-DAFC9EE40D98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingCart.Tests", "src\ShoppingCart\Tests\ShoppingCart.Tests\ShoppingCart.Tests.csproj", "{8DF0AF95-7A68-47DC-9410-DAFC9EE40D98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingCart.Api.Tests", "ShoppingCart.Api.Tests\ShoppingCart.Api.Tests.csproj", "{FD8C1A80-89FB-4B8C-8F17-2645BF89C030}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,6 +81,10 @@ Global
 		{8DF0AF95-7A68-47DC-9410-DAFC9EE40D98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DF0AF95-7A68-47DC-9410-DAFC9EE40D98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DF0AF95-7A68-47DC-9410-DAFC9EE40D98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD8C1A80-89FB-4B8C-8F17-2645BF89C030}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD8C1A80-89FB-4B8C-8F17-2645BF89C030}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD8C1A80-89FB-4B8C-8F17-2645BF89C030}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD8C1A80-89FB-4B8C-8F17-2645BF89C030}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -100,6 +106,7 @@ Global
 		{526426D9-BF0E-4FF1-A3B5-7E09574B32B8} = {A5C9A28C-4748-4428-A5CD-A72517C4059F}
 		{11336060-D225-4DC6-84E9-2E31291C3048} = {0E443DCC-CE93-43FC-87C8-92E38C7BAF81}
 		{8DF0AF95-7A68-47DC-9410-DAFC9EE40D98} = {11336060-D225-4DC6-84E9-2E31291C3048}
+		{FD8C1A80-89FB-4B8C-8F17-2645BF89C030} = {11336060-D225-4DC6-84E9-2E31291C3048}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DFA50A6B-E5D9-4A12-872C-F5A28DFE0BCB}
