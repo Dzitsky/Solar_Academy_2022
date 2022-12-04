@@ -1,8 +1,4 @@
-
-using Microsoft.AspNetCore.Identity;
 using ShoppingCart.Api;
-using ShoppingCart.DataAccess;
-using ShoppingCart.Domain;
 using ShoppingCart.Registrar;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -25,6 +21,8 @@ builder.Services.AddAuthenticationModule(builder.Configuration);
 //builder.Services.AddIdentity<ApplicationUser,IdentityRole>()
 //    .AddEntityFrameworkStores<ShoppingCartContext>()
 //    .AddDefaultTokenProviders();
+
+builder.Services.AddMemoryCache();
 
 var app = builder.Build();
 

@@ -11,6 +11,7 @@
     <PackageReference Include="Bogus" Version="34.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="6.0.11" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.10" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
     <PackageReference Include="Shouldly" Version="4.1.0" />
     <PackageReference Include="xunit" Version="2.4.1" />
@@ -25,8 +26,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\Solar_Academy_2022_api_tests\src\ShoppingCart\Hosts\ShoppingCart.Api\ShoppingCart.Api.csproj" />
-    <ProjectReference Include="..\..\..\..\..\Solar_Academy_2022_api_tests\src\ShoppingCart\Infrastructure\ShoppingCart.DataAccess\ShoppingCart.DataAccess.csproj" />
+    <ProjectReference Include="..\..\Hosts\ShoppingCart.Api\ShoppingCart.Api.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\ShoppingCart.DataAccess\ShoppingCart.DataAccess.csproj" />
   </ItemGroup>
 
 </Project>

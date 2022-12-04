@@ -37,7 +37,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{11336060
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingCart.Tests", "src\ShoppingCart\Tests\ShoppingCart.Tests\ShoppingCart.Tests.csproj", "{8DF0AF95-7A68-47DC-9410-DAFC9EE40D98}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingCart.Api.Tests", "ShoppingCart.Api.Tests\ShoppingCart.Api.Tests.csproj", "{FD8C1A80-89FB-4B8C-8F17-2645BF89C030}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingCart.Api.Tests", "src\ShoppingCart\Tests\ShoppingCart.Api.Tests\ShoppingCart.Api.Tests.csproj", "{FD8C1A80-89FB-4B8C-8F17-2645BF89C030}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

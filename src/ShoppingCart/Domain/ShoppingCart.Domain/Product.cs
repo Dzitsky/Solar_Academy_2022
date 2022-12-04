@@ -24,7 +24,17 @@ public class Product
     /// Цена.
     /// </summary>
     public decimal Price { get; set; }
-    
+
+    /// <summary>
+    /// Идентификатор страны-производителя.
+    /// </summary>
+    public Guid? ProducingCountryId { get; set; }
+
+    /// <summary>
+    /// Страна-производитель.
+    /// </summary>
+    public Country? ProducingCountry { get; set; }
+
     /// <summary>
     /// Коллекция элементов корзины.
     /// </summary>
