@@ -11,6 +11,8 @@ namespace ShoppingCart.Api.Tests
 {
     public class ShoppingCartApplicationFactory<TProgram> : WebApplicationFactory<TProgram> where TProgram : class
     {
+        private readonly string _dbName = Guid.NewGuid().ToString();
+
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
             builder.ConfigureServices(services =>
@@ -19,7 +21,10 @@ namespace ShoppingCart.Api.Tests
 
                 services.Remove(descriptor!);
 
-                services.AddDbContext<ShoppingCartContext>(options => { options.UseInMemoryDatabase("InMemoryDbForTesting"); });
+                services.AddDbContext<ShoppingCartContext>(options =>
+                {
+                    options.UseInMemoryDatabase(_dbName);
+                });
 
                 var sp = services.BuildServiceProvider();
 
