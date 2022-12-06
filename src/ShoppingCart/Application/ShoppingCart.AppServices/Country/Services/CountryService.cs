@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Caching.Memory;
+﻿using Microsoft.Extensions.Caching.Distributed;
+using Newtonsoft.Json;
 using ShoppingCart.AppServices.Country.Repositories;
 using ShoppingCart.Contracts;
 
@@ -13,30 +14,35 @@ namespace ShoppingCart.AppServices.Country.Services
         /// Инициализирует экземпляр <see cref="CountryService"/>.
         /// </summary>
         /// <param name="countryRepository">Репозиторий.</param>
-        /// <param name="memoryCache">Сервис кеширования в памяти.</param>
-        public CountryService(ICountryRepository countryRepository, IMemoryCache memoryCache)
+        /// <param name="distributedCache">Распределённый кеш.</param>
+        public CountryService(ICountryRepository countryRepository, IDistributedCache distributedCache)
         {
             _countryRepository = countryRepository;
-            _memoryCache = memoryCache;
+            _distributedCache = distributedCache;
         }
 
         private readonly ICountryRepository _countryRepository;
-
-        private readonly IMemoryCache _memoryCache;
+        
         private const string AllCountriesKey = "AllCountriesKey";
+        private readonly IDistributedCache _distributedCache;
 
         /// <inheritdoc />
         public async Task<CountryDto[]> GetAllAsync(CancellationToken cancellationToken)
         {
-            if (_memoryCache.TryGetValue(AllCountriesKey, out CountryDto[] items))
+            CountryDto[] items;
+
+            var str = await _distributedCache.GetStringAsync(AllCountriesKey, cancellationToken);
+            if (!string.IsNullOrWhiteSpace(str))
             {
+                items = JsonConvert.DeserializeObject<CountryDto[]>(str);
                 return items;
             }
-            
+
             items = await _countryRepository.GetAllAsync(cancellationToken);
 
-            var options = new MemoryCacheEntryOptions().SetSlidingExpiration(TimeSpan.FromMinutes(5));
-            _memoryCache.Set(AllCountriesKey, items, options);
+            var options = new DistributedCacheEntryOptions().SetSlidingExpiration(TimeSpan.FromMinutes(1));
+            await _distributedCache.SetStringAsync(AllCountriesKey, JsonConvert.SerializeObject(items), options,
+                cancellationToken);
 
             return items;
         }

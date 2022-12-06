@@ -1,5 +1,6 @@
 using ShoppingCart.Api;
 using ShoppingCart.Registrar;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +24,11 @@ builder.Services.AddAuthenticationModule(builder.Configuration);
 //    .AddDefaultTokenProviders();
 
 builder.Services.AddMemoryCache();
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    var redisSection = builder.Configuration.GetSection("Redis");
+    redisSection.Bind(options);
+});
 
 var app = builder.Build();
 
