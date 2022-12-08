@@ -62,11 +62,12 @@
             Работа с пользователями.
             </summary>
         </member>
-        <member name="M:ShoppingCart.Api.Controllers.UserController.#ctor(ShoppingCart.AppServices.ShoppingCart.Services.IUserService)">
+        <member name="M:ShoppingCart.Api.Controllers.UserController.#ctor(ShoppingCart.AppServices.ShoppingCart.Services.IUserService,Microsoft.Extensions.Logging.ILogger{ShoppingCart.Api.Controllers.UserController})">
             <summary>
             Работа с пользователями.
             </summary>
             <param name="userService"></param>
+            <param name="logger"></param>
         </member>
         <member name="M:ShoppingCart.Api.Controllers.UserController.Register(System.String,System.String,System.Threading.CancellationToken)">
             <summary>
@@ -85,6 +86,9 @@
             <param name="password"></param>
             <param name="cancellation"></param>
             <returns></returns>
+        </member>
+        <member name="M:ShoppingCart.Api.MyLogger`1.Log``1(Microsoft.Extensions.Logging.LogLevel,Microsoft.Extensions.Logging.EventId,``0,System.Exception,System.Func{``0,System.Exception,System.String})">
+            <inheritdoc/>
         </member>
         <member name="T:ShoppingCart.Api.SwaggerModule">
             <summary>

@@ -34,8 +34,17 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingCart.AppServices", "src\ShoppingCart\Application\ShoppingCart.AppServices\ShoppingCart.AppServices.csproj", "{526426D9-BF0E-4FF1-A3B5-7E09574B32B8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{11336060-D225-4DC6-84E9-2E31291C3048}"
+	ProjectSection(SolutionItems) = preProject
+		src\ShoppingCart\Tests\Test.js = src\ShoppingCart\Tests\Test.js
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingCart.Tests", "src\ShoppingCart\Tests\ShoppingCart.Tests\ShoppingCart.Tests.csproj", "{8DF0AF95-7A68-47DC-9410-DAFC9EE40D98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingCart.Tests", "src\ShoppingCart\Tests\ShoppingCart.Tests\ShoppingCart.Tests.csproj", "{8DF0AF95-7A68-47DC-9410-DAFC9EE40D98}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "misc", "misc", "{716CB333-A13A-4B41-AF82-26B91A4592A6}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.elk.yml = docker-compose.elk.yml
+		docker-compose.seq.yml = docker-compose.seq.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

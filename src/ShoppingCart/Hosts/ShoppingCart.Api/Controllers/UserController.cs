@@ -15,14 +15,24 @@ namespace ShoppingCart.Api.Controllers;
 public class UserController : ControllerBase
 {
     private readonly IUserService _userService;
-    
+    private readonly ILogger<UserController> _logger;
+
+    //private readonly ILogger<string> _stringLogger;
+
     /// <summary>
     /// Работа с пользователями.
     /// </summary>
     /// <param name="userService"></param>
-    public UserController(IUserService userService)
+    /// <param name="logger"></param>
+    public UserController(
+        IUserService userService, 
+        ILogger<UserController> logger
+        //, ILoggerFactory factory
+        )
     {
         _userService = userService;
+        _logger = logger;
+        //_stringLogger = factory.CreateLogger<string>();
     }
 
     /// <summary>
@@ -52,8 +62,24 @@ public class UserController : ControllerBase
     [ProducesResponseType(StatusCodes.Status201Created)]
     public async Task<IActionResult> Login(string login, string password, CancellationToken cancellation)
     {
-        var token = await _userService.Login(login, password, cancellation);
+        //_logger.LogInformation("Обычный текст, логирование бизнес операции");
+        //_logger.LogWarning("Warning");
 
-        return Ok(token);
+        //_logger.LogError("Произошла ошибка!");
+
+        //_stringLogger.Log(LogLevel.Error, "_stringLogger!");
+
+        //_logger.LogCritical("Что критичное!!");
+        //_logger.LogTrace("Не критично...");
+
+        try
+        {
+            var token = await _userService.Login(login, password, cancellation);
+            return Ok(token);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
     }
 }

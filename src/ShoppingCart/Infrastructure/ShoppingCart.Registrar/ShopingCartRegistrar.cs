@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using ShoppingCart.AppServices;
 using ShoppingCart.AppServices.Product.Repositories;
 using ShoppingCart.AppServices.Product.Services;
