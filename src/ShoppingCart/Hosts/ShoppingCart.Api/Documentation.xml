@@ -43,6 +43,24 @@
             </summary>
             <param name="id">Идентификатор товара в корзине.</param>
         </member>
+        <member name="T:ShoppingCart.Api.Controllers.CountryController">
+            <summary>
+            Контроллер для стран.
+            </summary>
+        </member>
+        <member name="M:ShoppingCart.Api.Controllers.CountryController.#ctor(ShoppingCart.AppServices.Country.Services.ICountryService)">
+            <summary>
+            Инициализирует экземпляр <see cref="T:ShoppingCart.Api.Controllers.CountryController"/>
+            </summary>
+            <param name="countryService"></param>
+        </member>
+        <member name="M:ShoppingCart.Api.Controllers.CountryController.GetAllAsync(System.Threading.CancellationToken)">
+            <summary>
+            Получить список всех стран.
+            </summary>
+            <param name="cancellation">Токен отмены.</param>
+            <returns>Список стран.</returns>
+        </member>
         <member name="T:ShoppingCart.Api.Controllers.ProductController">
             <summary>
             Работа с корзиной товаров.

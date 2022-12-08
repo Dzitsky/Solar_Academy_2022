@@ -2,12 +2,15 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using ShoppingCart.AppServices;
+using ShoppingCart.AppServices.Country.Repositories;
+using ShoppingCart.AppServices.Country.Services;
 using ShoppingCart.AppServices.Product.Repositories;
 using ShoppingCart.AppServices.Product.Services;
 using ShoppingCart.AppServices.Services;
 using ShoppingCart.AppServices.ShoppingCart.Repositories;
 using ShoppingCart.AppServices.ShoppingCart.Services;
 using ShoppingCart.DataAccess;
+using ShoppingCart.DataAccess.EntityConfigurations.Country;
 using ShoppingCart.DataAccess.EntityConfigurations.Product;
 using ShoppingCart.DataAccess.EntityConfigurations.ShoppingCart;
 using ShoppingCart.DataAccess.Interfaces;
@@ -39,6 +42,9 @@ public static class ShopingCartRegistrar
 
         services.AddTransient<IShoppingCartService, ShoppingCartService>();
         services.AddTransient<IShoppingCartRepository, ShoppingCartRepository>();
+
+        services.AddTransient<ICountryRepository, CountryRepository>();
+        services.AddTransient<ICountryService, CountryService>();
 
         services.AddScoped<IClaimsAccessor, HttpContextClaimsAccessor>();
 

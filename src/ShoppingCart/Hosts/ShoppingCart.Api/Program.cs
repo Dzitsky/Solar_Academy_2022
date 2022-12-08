@@ -5,9 +5,8 @@ using Serilog.Formatting.Json;
 using Serilog.Sinks.Elasticsearch;
 using Serilog.Sinks.File;
 using ShoppingCart.Api;
-using ShoppingCart.DataAccess;
-using ShoppingCart.Domain;
 using ShoppingCart.Registrar;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -58,6 +57,13 @@ builder.Services.AddAuthenticationModule(builder.Configuration);
 //    .AddEntityFrameworkStores<ShoppingCartContext>()
 //    .AddDefaultTokenProviders();
 
+builder.Services.AddMemoryCache();
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    var redisSection = builder.Configuration.GetSection("Redis");
+    redisSection.Bind(options);
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -77,3 +83,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+public partial class Program { }
